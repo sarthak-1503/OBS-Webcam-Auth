@@ -1,0 +1,19 @@
+
+
+.container {
+    width: 50%;
+    text-align: center;
+    margin: 2.8rem auto;
+    padding-top: 0.8rem;
+    padding-bottom: 0rem;
+}
+#login:hover {
+   border: 3px solid#007bff;
+   background-color: white;
+   color: #007bff;
+   font-weight: bold;
+}
+#createacc:hover {
+    text-decoration: none;
+    color: rgb(147, 207, 6);
+}

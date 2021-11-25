@@ -1,0 +1,46 @@
+{
+  "name": "online-banking-system",
+  "version": "1.0.0",
+  "description": "Online Banking System",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -e html,css,ejs,js,coffee --max-old-space-size=8192 app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarthak-1503/Online-Banking-System.git"
+  },
+  "author": "Sarthak Arora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarthak-1503/Online-Banking-System/issues"
+  },
+  "homepage": "https://github.com/sarthak-1503/Online-Banking-System#readme",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^3.11.0",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "canvas": "^2.8.0",
+    "child_process": "^1.0.2",
+    "connect-mongo": "^4.6.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "face-api.js": "file:face-api.js",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.11.14",
+    "multer": "^1.4.3",
+    "multer-gridfs-storage": "^5.0.2",
+    "nodemailer": "^6.7.0",
+    "nodemon": "^2.0.7",
+    "otp-generator": "^2.0.1",
+    "path": "^0.12.7",
+    "python-shell": "^3.0.1",
+    "serve-favicon": "^2.5.0",
+    "socket.io": "^4.3.2"
+  }
+}

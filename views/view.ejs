@@ -1,0 +1,52 @@
+<%- include("partials/header",{id:id ? id:null, record: record ? record : null}) %>
+
+    <head>
+        <link rel="stylesheet" href="/stylesheets/view.css">
+    </head>
+
+    <div class="container">
+        <div style="margin-top:4.5rem">
+            <h2>Customer Transaction History</h2>
+        </div>
+        <div>
+            <h3>Account Balance : Rs. <%=Account.total_amount%></h3> 
+        </div>
+        <%if(Account.transactions.length) {%>
+            <table>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Amount</th>
+                    <th>Type of Transaction</th>
+                    <th>Date and Time</th>
+                </tr>
+
+
+                <%var i,j,count=0;%>
+
+                <%for(j=0;j<Account.transactions.length; j++){%>
+                    <tr>
+                        <td>
+                            <%count=count+1%>
+                                <%=count%>
+                        </td>
+                        <td>
+                            <%=Account.transactions[j].amount%>
+                        </td>
+                        <td>
+                            <%=Account.transactions[j].typeOftransac%>
+                        </td>
+                        <td>
+                            <%var day=Account.transactions[j].dateANDtime.getDate()%>
+                                <%var month=Account.transactions[j].dateANDtime.getMonth()%>
+                                    <%var year=Account.transactions[j].dateANDtime.getFullYear()%>
+                                        <%=day + "-" + month + "-" + year%>
+                        </td>
+                    </tr>
+                    <%}%>
+            </table>
+            <%} else {%>
+                <h4 style="color: green; margin: 5rem auto;">No transaction history found!!</h4>
+            <%}%>
+    </div>
+
+    <%- include("partials/footer") %>

@@ -1,0 +1,73 @@
+// res.set('Content-Type', fileRecord[0].contentType);
+  // console.log(fileRecord[0].contentType)
+    
+  //   res.set('Content-Disposition', 'attachment; filename="' + record.name + '"');
+
+  //   var gridfsbucket = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
+  //     chunkSizeBytes: 1024,
+  //     bucketName: 'filesBucket'
+  // });
+
+  // gridfsbucket.openDownloadStreamByName(fileRecord[0].filename).
+  // pipe(fs.createWriteStream('/photos'+fileRecord[0].filename)).
+  //     on('error', function (error) {
+  //         console.log("error" + error);
+  //     }).
+  //     on('finish', function () {
+  //         console.log('done!');
+  //     });
+
+    // var readstream = gfs.createReadStream({
+    //   _id: ObjectId(record.fileId),
+    //   filename : record.name,
+    //   root : '/home/sa-coder15/Desktop/Web-Development/Online-Banking-System-copy/public/photos'
+    // });
+
+    // readstream.on("error", function(err) { 
+    //     res.end();
+    // });
+    // readstream.pipe(res);
+
+  // let captured = "user_" + record._id + ".jpg";
+
+
+
+  // app.use('/click',clickRoutes);
+// console.log(Accounts);
+
+// app.get('/auth/signup/:id/click/snaps',async(req,res)=> {
+//     let id = req.params.id;
+//     let record = await Accounts.findOne({_id:id});
+//     // cnt : record.uploads.length()
+//     let url = req.url;
+//     // console.log(Accounts.getIndexes());
+
+//     // console.log("gfs : ",gfs);
+//     res.render('clickSnaps',{id : req.params.id, cnt : 0, record: record, url : url});
+// });
+
+// app.post('/auth/signup/:id/click/snaps',upload.single('base64image'),async(req,res)=> {
+//     let id = req.params.id;
+//     let record = await Accounts.findOne({_id:id});
+//     console.log("image-body : ",req.base64image);
+
+//     // Accounts.updateOne({_id : id},{ $set : {uploads : upload}}).then(record => {
+//     //     console.log('record.uploads : ',record.uploads); 
+//     // }).catch(err=> {
+//     //     console.log('error : ',err);
+//     // });
+
+//     // let imageRecords = gfs.chunks.find( { _id: id } );
+//     // console.log(imageRecords);
+
+//     res.redirect('/auth/signup/'+req.params.id+'/click/snaps');
+// }); 
+
+// const wCap = new cv.VideoCapture(0);
+// wCap.set(cv.CAP_PROP_FRAME_WIDTH,300);
+
+// setInterval(()=> {
+//     const frame = wCap.read();
+//     const image = cv.imencode('.jpg',frame).toString('base64');
+//     io.emit('image',image);
+// },10);

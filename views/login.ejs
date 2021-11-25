@@ -1,0 +1,56 @@
+<%- include("partials/header",{id:id ? id:null}) %>
+
+    <head>
+        <link rel="stylesheet" href="/stylesheets/login.css">
+    </head>
+
+    <%if(lastUrl == '/auth/signup') {%>
+        <script>
+            $(document).ready(()=> {
+                alert('Please login now!');
+            });
+        </script>
+    <%}%>
+
+
+    <div class="container" style="border: 2px solid black;">
+
+        <div style="font-size: 10rem;">
+            <i class="fas fa-user-circle" style="color: #007bff;"></i>
+        </div>
+
+        <div style="text-align: center; margin: 1rem auto 2.5rem auto;">
+            <form action="/auth/login" method="POST">
+
+                <div>
+                    <div style="text-align:center;">
+                        <input type="email" name="Email" placeholder="Email ID"
+                            style="width: 50%; height: 3rem; margin: 0.6rem auto;padding: 0.5rem;" required autofocus>
+                    </div>
+
+                    <div style="text-align:center; ">
+                        <input class="createPass" type="password" placeholder="Password" name="p1" minlength="3"
+                            maxlength="16" size="16" 
+                            title="Password must follow the criteria:
+                                1. atleast 8 characters long
+                                2. atleast 1 uppercase letter
+                                3. atleast 1 lowercase letter
+                                4. atleast 1 special character "
+                            style="width: 50%; height: 3rem; margin: 0.6 auto; padding: 0.5rem; " required>
+                            <!-- pattern="^(?=.{5,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$" -->
+
+                        <button id="login" class="btn btn-primary btn-lg"
+                            style="width: 50%; height: 3.5rem; margin-top: 0.8rem;">Log in</button>
+                    </div>
+
+            </form>
+
+            <div style="padding-right: 19rem; padding-left: 2.2rem; margin-top: 2rem;">
+                <a href="/auth/signup" id="createacc" style="font-size: 1.2rem;">Create Account</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <%- include("partials/footer") %>

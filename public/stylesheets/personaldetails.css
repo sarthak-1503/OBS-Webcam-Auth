@@ -1,0 +1,23 @@
+.container {
+    text-align: center;
+    margin: 4rem auto;
+}
+tr {
+    border: 1px solid rgb(179, 174, 174);
+}
+table {
+    border: 2px solid black;
+    margin: 4rem auto 8rem auto;
+}
+
+th {
+    border-right: 2px solid black;
+    text-align: left;
+}
+th,td {
+    padding: 0.8rem 8rem;
+    border: 1.5px solid rgb(187, 180, 180);
+}
+th {
+    padding-left: 2rem;
+}

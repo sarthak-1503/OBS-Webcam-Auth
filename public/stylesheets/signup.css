@@ -1,0 +1,31 @@
+.container {
+    width: 50%;
+    text-align: center !important;
+    margin: 2.8rem auto;
+    padding-top: 0.8rem;
+    padding-bottom: 0rem;
+}
+
+#signup:hover {
+   border: 3px solid#dc3545;
+   background-color: white;
+   color: #dc3545;
+   font-weight: bold;
+}
+
+#createacc:hover {
+    text-decoration: none;
+    color: blue;
+}
+
+#createacc:visited {
+    text-decoration: none;
+    color: red;
+}
+
+div#user-icon {
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    width: 80%;
+}

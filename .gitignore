@@ -1,0 +1,4 @@
+node_modules
+.env
+apimodels
+./public/face-api.js

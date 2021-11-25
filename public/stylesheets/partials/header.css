@@ -1,0 +1,50 @@
+.navbar {
+    background: #1A73E8;
+}
+
+#navlogout:focus {
+    outline: none;
+}
+
+#navlogout {
+    border: none;
+    background: #1A73E8;
+}
+
+#backicon {
+    background-color: #1A73E8;
+    background-size: 100%;
+}
+
+#back {
+    color: white;
+    margin-left: 0.7rem;
+    margin-bottom: 0.6rem;
+}
+
+#home {
+    color: white;
+}
+
+#home:hover {
+    cursor: pointer;
+    color: yellow;
+}
+
+.nav-link {
+    color: white;
+    float: left;
+}
+
+.nav-left {
+    margin-right: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.body {
+    background-color: rgb(161, 225, 255) !important;
+}
+
+ul {
+    margin: 0;
+}

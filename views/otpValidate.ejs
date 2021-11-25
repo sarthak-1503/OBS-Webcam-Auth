@@ -1,0 +1,44 @@
+<%- include("partials/header",{id:id ? id:null, record: record ? record : null}) %>
+
+<%if(count > 1) {%>
+    <script>
+
+        $(document).ready(()=> {
+            alert("OTP sent! Check your registered mail.");
+        });
+        
+    </script>    
+<%}%>
+
+<div class="container" style="border: 2px solid black; margin: 3rem; text-align: center;">
+
+    <div id="user-icon" style="font-size: 10rem; text-align: center;">
+        <i class="fas fa-key" style="color: gold;"></i>
+    </div>
+
+    <div>
+        <h3>Enter OTP :</h3>
+    </div>
+
+    <div style="text-align: center; margin: 1rem auto 2.5rem auto;">
+
+        <form action="<%=url%>" method="POST">
+
+            <div style="text-align:center;">
+                <input type="text" name="otp" placeholder="Enter OTP"
+                    style="width: 50%; height: 3rem; margin: 0.6rem auto;padding: 0.5rem;" required>
+            </div>
+
+            <div>
+                <button id="Submit" type="submit" class="btn btn-primary btn-sm"
+                    style="margin-top: 0.6rem;">Verify</button>
+            </div>
+
+
+        </form>
+    </div>
+
+</div>
+
+<%- include("partials/footer") %>
+

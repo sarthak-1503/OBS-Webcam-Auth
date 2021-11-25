@@ -1,0 +1,32 @@
+<%- include("partials/header",{id:id ? id:null, record: record ? record : null}) %>
+
+  <head>
+    <script src="/javascripts/transaction.js" type="text/javascript"></script>
+  </head>
+
+  <div class="container" style="text-align: center; margin: 6rem auto; border: 2px solid black; width: 40%;">
+    <div style="text-align: center; margin: 3rem auto">
+      <h2>Make Transaction</h2>
+    </div>
+    <div class="container" style="text-align: left; margin: 4rem 11.7rem; ">
+      <form id="transacsub" action="/account/view" method="POST">
+        <div style="margin: 1.5rem auto;">
+          <select name="trans_type" style="width: 40%;">
+            <option selected disabled>Select type of transaction</option>
+            <option value="withdrawl">Withdrawl</option>
+            <option value="deposit">Deposit</option>
+          </select>
+        </div>
+        <div style="margin: 1.5rem auto;">
+          <input type="number" id="amt" placeholder="Amount" name="trans_amount" style="width: 40%;">
+        </div>
+        <div style="margin: 1.5rem auto; ;">
+          <button id="pay">Confirm</button>
+          <button id="cancel" formaction="/" formmethod="get">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <%- include("partials/footer") %>

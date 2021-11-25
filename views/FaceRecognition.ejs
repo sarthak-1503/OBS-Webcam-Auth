@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script defer src="/face-api.js/dist/face-api.min.js"></script>
+  <script defer src="/javascripts/supportFunc.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+  <title>Face Recognition</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="file" id="capturedImage">
+  <!-- image captured during login -->
+  <!-- <img src='../6194243490d3cccc2b77847d.jpg' id="capturedImage" alt="">  -->
+  <!-- photos -> actual images during signup -->
+  <div>
+    <h4>Actual Image</h4>
+    <img src='/images/Sarthak.jpg' id='Sarthak' alt="" style="max-width:7rem; max-height: 10rem;">
+  </div>
+
+  <div id='proceed'></div>
+
+  <!-- Sarthak Arora Photo.jpg -->
+</body>
+
+</html>

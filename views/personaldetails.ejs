@@ -1,0 +1,69 @@
+<%- include("partials/header",{id:id ? id:null, record: record ? record : null}) %>
+
+    <head>
+        <link rel="stylesheet" href="/stylesheets/personaldetails.css">
+    </head>
+
+
+    <div class="container">
+        <div style="margin-top:4.5rem">
+            <h2>Customer Personal Details</h2>
+        </div>
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td>
+                    <%= record.name %>
+                </td>
+            </tr>
+            <%if(record.address !=null) {%>
+                <tr>
+                    <th>Address:</th>
+                    <td>
+                        <%= record.address %>
+                    </td>
+                </tr>
+            <%}%>
+            <%if(record.Mobileno1 !=null) {%>
+                <tr>
+                    <th>Mobile No.1:</th>
+                    <td>
+                        <%= record.Mobileno1 %>
+                    </td>
+                </tr>
+            <%}%>
+            <%if(record.Mobileno2 !=null) {%>
+                <tr>
+                    <th>Mobile No.2:</th>
+                    <td>
+                        <%= record.Mobileno2 %>
+                    </td>
+                </tr>
+            <%}%>
+            <%if(record.Phoneno !=null) {%>
+                <tr>
+                    <th>Phone No.:</th>
+                    <td>
+                        <%= record.Phoneno %>
+                    </td>
+                </tr>
+            <%}%>
+            <%if(record.gender !=null) {%>
+                <tr>
+                    <th>Gender:</th>
+                    <td>
+                        <%= record.gender %>
+                    </td>
+                </tr>
+            <%}%>
+            <tr>
+                <th>Email ID:</th>
+                <td>
+                    <%= record.email %>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+<%- include("partials/footer") %>

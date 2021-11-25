@@ -1,0 +1,9 @@
+<%- include("partials/header",{id:id ? id:null, record: record ? record : null}) %>
+
+<script>
+    alert("Invalid OTP! Login again.")
+    window.location.replace("/auth/login");
+</script>
+
+<%- include("partials/footer") %>
+
