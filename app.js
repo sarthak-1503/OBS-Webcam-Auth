@@ -26,7 +26,8 @@ let Accounts = require('./models/accountModel');
 app.set("view engine", "ejs");
 app.use(favicon('./public/images/favicon.ico'));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use('/',express.static('./public/'));
+app.use(express.static('./public'));
+app.use('/base',express.static('./'));
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(session(sessionConfig));
@@ -39,7 +40,7 @@ app.use('/account', accountRoutes);
 
 
 // let port = Math.floor(Math.random() * 2 + 1024);
-let port = 1025;
+let port = 3000;
 
 app.listen(port, () => {
     console.log(`The server is listening on ${port}`);

@@ -71,3 +71,19 @@
 //     const image = cv.imencode('.jpg',frame).toString('base64');
 //     io.emit('image',image);
 // },10);
+
+
+
+<%if(lastUrl == '/auth/signup') {%>
+        <script>
+            $(document).ready(()=> {
+                alert('Please login now!');
+            });
+        </script>
+    <%}else {%>
+        <script>
+            $(document).ready(()=> {
+                alert('Login to proceed!');
+            });
+        </script>    
+    <%}%>

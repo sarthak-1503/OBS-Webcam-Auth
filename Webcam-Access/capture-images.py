@@ -1,5 +1,6 @@
 import cv2
 import sys
+import os
 
 cam = cv2.VideoCapture(0)
 
@@ -23,6 +24,7 @@ while True:
         # SPACE pressed
         img_name = sys.argv[1] + ".jpg"
         cv2.imwrite(img_name, frame)
+        os.rename("/home/sa-coder15/Desktop/Web-Development/OBS-Webcam-Auth/"+img_name, "/home/sa-coder15/Desktop/Web-Development/OBS-Webcam-Auth/public/photos/"+img_name)
         print("{} written!".format(img_name))
         img_counter += 1
 
