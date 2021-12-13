@@ -5,12 +5,6 @@ let bcrypt = require("bcrypt");
 let nodemon = require("nodemon");
 let favicon = require("serve-favicon");
 let session = require("express-session");
-// const multer = require('multer');
-// const {GridFsStorage} = require('multer-gridfs-storage');
-// const Grid = require('gridfs-stream');
-// const crypto = require('crypto');
-// const path = require('path');
-// const methodOverride = require('method-override');
 let app = express();
 let sessionConfig = require('./DB-Connect/connect-db').sessionConfig;
 let conn = require('./DB-Connect/connect-db').conn;
@@ -39,7 +33,6 @@ app.use('/auth', authRoutes);
 app.use('/account', accountRoutes);
 
 
-// let port = Math.floor(Math.random() * 2 + 1024);
 let port = 3000;
 
 app.listen(port, () => {

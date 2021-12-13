@@ -17,27 +17,19 @@
         <div style="text-align: center; margin: 1rem auto 2.5rem auto;">
             <form onsubmit="return matchPasswords()" action="/auth/signup" method="POST"  enctype="multipart/form-data">
 
-                <!-- <div> -->
                 <div style="text-align:center;">
                     <input type="text" name="name" placeholder="Name"
                         style="width: 50%; height: 3rem; margin: 0.6rem auto;padding: 0.5rem;" required autofocus>
                 </div>
 
-                <!-- <div> -->
                 <div style="text-align:center;">
                     <input type="email" name="email" placeholder="Email ID"
                         style="width: 50%; height: 3rem; margin: 0.6rem auto;padding: 0.5rem;" required>
                 </div>
 
-                <!-- <div style="text-align:center;">
-                    <input pattern="/^(\+\d{1,3}[- ]?)?\d{10}$/
-                    " name="Mobileno1" placeholder="Mobile No."
-                        style="width: 50%; height: 3rem; margin: 0.6rem auto;padding: 0.5rem;" required>
-                </div> -->
-
                 <div style="text-align:center; ">
                     <input class="createPass" type="password" placeholder="Create Password" name="p1" minlength="3"
-                        maxlength="16" size="16"
+                        maxlength="16" size="16" pattern="^(?=.{5,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$"
                         title="Password must follow the criteria:
                                 1. atleast 8 characters long
                                 2. atleast 1 uppercase letter
@@ -45,11 +37,10 @@
                                 4. atleast 1 special character "
                         style="width: 50%; height: 3rem; margin: 0.6rem auto; padding: 0.5rem;" required>
                 </div>
-                <!-- pattern="^(?=.{5,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$" -->
 
                 <div style="text-align:center; ">
                     <input class="createPass" type="password" placeholder="Confirm Password" name="p2" minlength="3"
-                        maxlength="16" size="16"
+                        maxlength="16" size="16" pattern="^(?=.{5,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$"
                         title="Password must follow the criteria:
                                     1. atleast 8 characters long
                                     2. atleast 1 uppercase letter
@@ -57,11 +48,6 @@
                                     4. atleast 1 special character "
                         style="width: 50%; height: 3rem; margin: 0.6rem auto; padding: 0.5rem; " required>
                 </div>
-                <!-- pattern="^(?=.{5,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$" -->
-
-                <!-- <script>
-                    alert("You need to click a maximum of 3 snapshots after you submit your details!");
-                </script> -->
 
                 <div style="text-align:center;">
                     <input type="file" name="file" placeholder="Upload your Photo"

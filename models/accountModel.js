@@ -10,21 +10,8 @@ let AccountsSchema = new mongoose.Schema({
     gender: String,
     email: String,
     account_no: Number,
-    // current_balance: Number,
     password: String,
     total_amount: Number,
-    // otp: {
-    //     type: String,
-    //     default: ""
-    // },
-    // otpCount: {
-    //     type: Number,
-    //     default: 0
-    // },
-    // digitalSign: {
-    //     type: String, 
-    //     default: null
-    // },
     fileId: String,
     transactions:[transactionSchema]
 });

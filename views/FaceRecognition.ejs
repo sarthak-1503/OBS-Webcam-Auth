@@ -12,27 +12,12 @@
   </head>
 
   <style>
-    /* body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column
-    } */
-
     #capturedImage {
       display: none;
     }
 
-    /* #proceed {
-    visibility: hidden;
-  } */
-
     canvas {
-      position: absolute; 
+      position: absolute;
       text-align: center;
       top: 0;
       left: 0;
@@ -46,31 +31,14 @@
       document.getElementById('capturedImage').style.display = "inline"
     })
 
-  // setInterval(()=> {
-  //   document.getElementById('proceed').style.visibility = "visible"
-  // },2000)
-
 
   </script>
 
   <body>
-    <!-- image captured during login -->
     <img id="capturedImage" alt="">
-    <!-- /images/Sarthak.jpg -->
-    <!-- photos -> actual images during signup -->
     <div id="original">
       <h4>Actual Image</h4>
       <img src='<%=actualfile%>' id='actual' name='<%=name%>' style="max-width:12rem; max-height: 16rem;">
     </div>
-    <!-- <div class="container">
-    
-  </div>
 
-  <div class="container">
-     
-  </div> -->
-
-    <div id='proceed'></div>
-
-    <!-- Sarthak Arora Photo.jpg -->
     <%- include('partials/footer') %>

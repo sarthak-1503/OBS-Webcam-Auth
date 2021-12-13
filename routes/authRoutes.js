@@ -1,7 +1,5 @@
 let express = require("express");
 let bcrypt = require("bcrypt");
-// let cv = require('opencv4nodejs');
-// let io = require('socket.io')
 let mongoose = require("mongoose");
 let router = express.Router();
 let Accounts = require("../models/accountModel");
@@ -12,15 +10,12 @@ const crypto = require("crypto");
 const path = require("path");
 const methodOverride = require("method-override");
 const fs = require("fs");
-// let spawn = require("child_process").spawn;
 let { PythonShell } = require("python-shell");
 let requireLogin = require("../middlewares/AuthMiddleware");
 var ObjectId = require("mongodb").ObjectID;
 let conn = require("../DB-Connect/connect-db").conn;
-
 const dbUrl = "mongodb://localhost:27017/obsdb";
 const secret = "betterkeepitasasecret";
-// let sendOTP = require("../Operations/otpGeneration");
 
 let gfs;
 
@@ -30,7 +25,6 @@ conn.on("open", () => {
   gfs.collection("uploads");
 });
 
-// Create storage engine
 const storage = new GridFsStorage({
   url: dbUrl,
   file: (req, file) => {
@@ -51,11 +45,7 @@ const storage = new GridFsStorage({
 const upload = multer({ storage });
 
 router.get("/login", async (req, res) => {
-  // if (req.session.user_id != null && req.session.user_id != undefined) {
-  //   res.render("AlreadyLoggedIn");
-  // } else {
-    res.render("login", { id: null, lastUrl: Accounts.referrer, record: null });
-  // }
+  res.render("login", { id: null, lastUrl: Accounts.referrer, record: null });
 });
 
 router.post("/login", async (req, res) => {
@@ -88,17 +78,12 @@ router.get("/login/validate/:id", async (req, res) => {
     console.log("id error : ", err);
   });
 
-  // let records = await Accounts.find({}).catch(err => {
-  //   console.log("all records error : ", err);
-  // })
-
   let fileRecord = await gfs.files
     .find({ _id: ObjectId(record.fileId) })
     .toArray()
     .catch((err) => {
       console.log("File find error : ", err);
     });
-  // console.log(fileRecord);
 
   let options = {
     mode: "text",
@@ -133,14 +118,12 @@ router.get("/login/validate/:id", async (req, res) => {
   //     });
   //     readstream.pipe(res);
 
-      
   // }
   res.render("FaceRecognition", {
     actualfile: "/images/" + fileRecord[0].filename,
     name: record.name,
     id: null,
     capturedfile: "/photos/" + record.name + ".jpg",
-    // records: records
   });
 });
 
@@ -170,7 +153,6 @@ router.post("/login/validate/:id", async (req, res) => {
     console.log(id);
     res.redirect("/");
   } else {
-    // req.session.user_id = null;
     console.log(req.session.user_id);
     res.redirect("/auth/login");
   }
@@ -241,23 +223,6 @@ router.post("/signup", upload.single("file"), async (req, res) => {
 
 router.get("/logout", async (req, res) => {
   req.session.destroy();
-
-  // let record = await Accounts.findOne({ _id: req.session.user_id }).catch(
-  //   (err) => {
-  //     console.log("id error : ", err);
-  //   }
-  // );
-  // let fileRecord = await gfs.files
-  //   .find({ _id: ObjectId(record.fileId) })
-  //   .toArray()
-  //   .catch((err) => {
-  //     console.log("File find error : ", err);
-  //   });
-
-  // fs.unlink('/photos/'+fileRecord[0].filename,(error)=> {
-  //   console.error('there was an error:', error.message);
-  // });
-  // console.log('successfully deleted the file');
 
   res.redirect("/");
 });
