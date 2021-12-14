@@ -8,7 +8,7 @@ document.addEventListener("keyup", () => {
       faceapi.nets.faceLandmark68Net.loadFromUri("/apimodels"),
       faceapi.nets.ssdMobilenetv1.loadFromUri("/apimodels"),
     ]).then(start);
-  }, 150);
+  }, 80);
 });
 
 async function start() {
