@@ -1,6 +1,7 @@
 import cv2
 import sys
 import os
+from pathlib import Path
 
 cam = cv2.VideoCapture(0)
 
@@ -22,9 +23,13 @@ while True:
         break
     elif k%256 == 32:
         # SPACE pressed
+        if not os.path.exists(str(Path.home()) + '/Desktop/' + sys.argv[2]):
+            os.makedirs(str(Path.home()) + '/Desktop/' + sys.argv[2])
+            
         img_name = sys.argv[1] + ".jpg"
-        cv2.imwrite(img_name, frame)
-        os.rename("/home/sa-coder15/Desktop/Web-Development/OBS-Webcam-Auth/"+img_name, "/home/sa-coder15/Desktop/Web-Development/OBS-Webcam-Auth/public/photos/"+img_name)
+        path = str(Path.home()) + '/Desktop/' + str(sys.argv[2])
+
+        cv2.imwrite(os.path.join(path,img_name), frame)
         print("{} written!".format(img_name))
         img_counter += 1
 

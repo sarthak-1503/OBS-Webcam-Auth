@@ -26,19 +26,41 @@
 
   <script>
 
-    document.addEventListener('keyup', () => {
-      document.getElementById('capturedImage').src = '<%=capturedfile%>';
-      document.getElementById('capturedImage').style.display = "inline"
+    // document.addEventListener('keyup', () => {
+      
+    // })
+    // document.body.onkeyup = (e) => {
+    //   console.log('key is pressed')
+    //   if(e.keyCode === 32) {
+    
+    //     console.log('ab')
+        
+    //   }
+    // }
+
+    document.addEventListener('keyup',() => {
+        document.getElementById('capturedImage').src = '<%=capturedfile%>';
+        console.log(document.getElementById('capturedImage').src)
+        document.getElementById('capturedImage').style.display = "inline"
     })
 
+    // $(document).ready(function() {
+    //   $('body').keyup(function() {
+    //     alert('Handler for .keyup() called.');
+    
+    //   });
+    // });
+
+      // console.log('i am not creating any problem')
 
   </script>
 
   <body>
+
     <img id="capturedImage" alt="">
     <div id="original">
       <h4>Actual Image</h4>
-      <img src='<%=actualfile%>' id='actual' name='<%=name%>' style="max-width:12rem; max-height: 16rem;">
+      <img src='data:image/jpg;base64,<%=chunk%>' id='actual' name='<%=name%>' style="max-width:12rem; max-height: 16rem;">
     </div>
 
     <%- include('partials/footer') %>

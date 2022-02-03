@@ -33,7 +33,7 @@ app.use('/auth', authRoutes);
 app.use('/account', accountRoutes);
 
 
-let port = 3000;
+let port = 1025;
 
 app.listen(port, () => {
     console.log(`The server is listening on ${port}`);

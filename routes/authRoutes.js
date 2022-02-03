@@ -16,6 +16,7 @@ var ObjectId = require("mongodb").ObjectID;
 let conn = require("../DB-Connect/connect-db").conn;
 const dbUrl = "mongodb://localhost:27017/obsdb";
 const secret = "betterkeepitasasecret";
+const os = require('os')
 
 let gfs;
 
@@ -78,18 +79,11 @@ router.get("/login/validate/:id", async (req, res) => {
     console.log("id error : ", err);
   });
 
-  let fileRecord = await gfs.files
-    .find({ _id: ObjectId(record.fileId) })
-    .toArray()
-    .catch((err) => {
-      console.log("File find error : ", err);
-    });
-
   let options = {
     mode: "text",
     pythonOptions: ["-u"],
     scriptPath: "Webcam-Access",
-    args: [record.name],
+    args: [record.name, id],
   };
 
   PythonShell.run("capture-images.py", options, function (err, result) {
@@ -97,34 +91,50 @@ router.get("/login/validate/:id", async (req, res) => {
     console.log("result: ", result.toString());
   });
 
-  // if(!fileRecord[0]) {
-  //   console.log("file not found!");
-  //   return res
-  //       .status(404)
-  //       .send("Error on the database looking for the file.");
-  // } else {
-  //   res.set("Content-Type", fileRecord[0].contentType);
-  //     res.set(
-  //       "Content-Disposition",
-  //       'attachment; filename="' + fileRecord[0].filename + '"'
-  //     );
+  let fileRecord = await gfs.files.find({ _id: ObjectId(record.fileId) }).toArray().catch((err) => {
+        console.log("File find error : ", err);
+      })
 
-  //     var readstream = gfs.createReadStream({
-  //       _id: record.fileId,
-  //     });
+    var readstream = gfs.createReadStream({
+          filename: fileRecord[0].filename
+    });
+    
+    console.log(fileRecord[0]);
+    // res.writeHead(200, {'Content-Type': 'image/jpeg'});
+    let filePath = path.join(__dirname, '/../../../../' + id + "/" + record.name + ".jpg")
+    // console.log(__dirname + '/../../../../')
+    console.log(filePath)
 
-  //     readstream.on("error", function (err) {
-  //       res.end();
-  //     });
-  //     readstream.pipe(res);
+    let chunks = []
 
-  // }
-  res.render("FaceRecognition", {
-    actualfile: "/images/" + fileRecord[0].filename,
-    name: record.name,
-    id: null,
-    capturedfile: "/photos/" + record.name + ".jpg",
-  });
+    readstream.on('data', function(chunk) {
+      chunks.push(chunk)
+      // res.write(chunk)
+    });
+
+    const userHomeDir = os.homedir();
+
+    readstream.on('end',async()=> {
+      console.log('readstream ended')
+      console.log(chunks)
+
+      let captured = userHomeDir + "/Desktop/" + id + "/" + record.name + ".jpg";
+      console.log(captured)
+
+      if(fs.existsSync(captured) === false) {
+        res.render('picClickAlert',{id: null});
+      } else {
+        chunks = Buffer.concat(chunks)
+        let chunk = Buffer(chunks).toString('base64')
+        
+        res.render("FaceRecognition", {
+          name: record.name,
+          id: null,
+          capturedfile: filePath,
+          chunk: chunk
+        });
+      }
+    })
 });
 
 router.post("/login/validate/:id", async (req, res) => {
@@ -135,7 +145,7 @@ router.post("/login/validate/:id", async (req, res) => {
   req.session.user_id = id;
 
   fs.unlink(
-    "/home/sa-coder15/Desktop/Web-Development/OBS-Webcam-Auth/public/photos/" +
+    "/home/sa-coder15/Desktop/" + id + '/' + 
       record.name +
       ".jpg",
     (error) => {
@@ -172,7 +182,7 @@ router.post("/signup", upload.single("file"), async (req, res) => {
   let name = req.body.name;
   let filename = req.file.filename;
   let pass = create;
-  var totalAmount = 0;
+  var totalAmount =  0;
   let saltRounds = 10;
 
   let fileRecord = await gfs.files
@@ -193,6 +203,7 @@ router.post("/signup", upload.single("file"), async (req, res) => {
   };
 
   console.log(fileId);
+
   let record = await Accounts.findOne({ email: email });
 
   if (record != null && record != undefined) {
