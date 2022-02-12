@@ -14,8 +14,8 @@ let { PythonShell } = require("python-shell");
 let requireLogin = require("../middlewares/AuthMiddleware");
 var ObjectId = require("mongodb").ObjectID;
 let conn = require("../DB-Connect/connect-db").conn;
-const dbUrl = "mongodb://localhost:27017/obsdb";
-const secret = "betterkeepitasasecret";
+// const dbUrl = "mongodb://localhost:27017/obsdb";
+// const secret = "betterkeepitasasecret";
 const os = require('os')
 
 let gfs;
@@ -101,7 +101,8 @@ router.get("/login/validate/:id", async (req, res) => {
     
     console.log(fileRecord[0]);
     // res.writeHead(200, {'Content-Type': 'image/jpeg'});
-    let filePath = path.join(__dirname, '/../../../../' + id + "/" + record.name + ".jpg")
+    let filePath = id + "/" + record.name + ".jpg"
+    // path.join(__dirname, '/../../../../' + )
     // console.log(__dirname + '/../../../../')
     console.log(filePath)
 
@@ -118,22 +119,23 @@ router.get("/login/validate/:id", async (req, res) => {
       console.log('readstream ended')
       console.log(chunks)
 
-      let captured = userHomeDir + "/Desktop/" + id + "/" + record.name + ".jpg";
-      console.log(captured)
-
-      if(fs.existsSync(captured) === false) {
-        res.render('picClickAlert',{id: null});
-      } else {
-        chunks = Buffer.concat(chunks)
+      // let captured = userHomeDir + "/Desktop/" + id + "/" + record.name + ".jpg";
+      // console.log(captured)
+      chunks = Buffer.concat(chunks)
         let chunk = Buffer(chunks).toString('base64')
         
         res.render("FaceRecognition", {
           name: record.name,
           id: null,
+          tempId: req.params.id,
           capturedfile: filePath,
           chunk: chunk
         });
-      }
+      // if(fs.existsSync(filePath) === false) {
+      //   res.render('picClickAlert',{id: null});
+      // } else {
+        
+      // }
     })
 });
 
@@ -154,7 +156,10 @@ router.post("/login/validate/:id", async (req, res) => {
       }
     }
   );
-  console.log("successfully deleted the file");
+
+  // fs.rmSync("/home/sa-coder15/Desktop/" + id, { recursive: true, force: true });
+
+  console.log("successfully deleted the file source");
 
   console.log(conclude);
   console.log(req.session.user_id);
@@ -204,32 +209,6 @@ router.post("/signup", upload.single("file"), async (req, res) => {
 
   console.log(fileId);
 
-  let record = await Accounts.findOne({ email: email });
-
-  if (record != null && record != undefined) {
-    console.log(record);
-    console.log("User already exists!");
-    res.status(404).send("User already exists!");
-  } else {
-    let salt = await bcrypt.genSalt(saltRounds).catch((err) => {
-      console.log(err);
-    });
-    let hash = await bcrypt.hash(pass, salt).catch((err) => {
-      console.log(err);
-    });
-
-    logindetails.password = hash;
-
-    let account = await Accounts.create(logindetails).catch((err) => {
-      console.log(err);
-    });
-
-    let record = await Accounts.findOne({ email: email });
-    console.log(record);
-
-    console.log("Account created successfully.");
-    res.redirect("/auth/login");
-  }
 });
 
 router.get("/logout", async (req, res) => {

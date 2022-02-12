@@ -9,12 +9,10 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"> </script>
+    <!-- <base href="/"> -->
   </head>
 
   <style>
-    #capturedImage {
-      display: none;
-    }
 
     canvas {
       position: absolute;
@@ -25,39 +23,40 @@
   </style>
 
   <script>
+    document.addEventListener('DOMContentLoaded',() => {
+      alert('In the VIDEO CAPTURE window, First press SPACEBAR to capture your face, then press ESC')
+    });
 
-    // document.addEventListener('keyup', () => {
+    window.onkeyup = (e) => {
       
-    // })
-    // document.body.onkeyup = (e) => {
-    //   console.log('key is pressed')
-    //   if(e.keyCode === 32) {
-    
-    //     console.log('ab')
-        
-    //   }
+      // document.getElementsByClassName('upload-file').innerHTML += '<input type="file" placeholder="Click to upload">';
+      // document.getElementsByClassName('upload-file').innerHTML += '';
+
+      // document.getElementById('capturedImage').src = '/../../../../<%=capturedfile%>';
+      
+      // console.log('<%=capturedfile%>')
+      // console.log('source: ' + document.getElementById('capturedImage').src)
+      // document.getElementById('capturedImage').style.display = "in,line"
+      alert('Upload the file saved on your Desktop inside the folder - "<%=tempId%>"')
+
+    }
+
+    // let displayImage = () => {
+    //   let image = document.getElementById('capturedImage');
+    //   let upload = document.getElementById('upload');
+    //   // image.src = upload.value;
+	  //   image.src = URL.createObjectURL(upload.files[0])
+    //   image.style.display = "inline"
     // }
-
-    document.addEventListener('keyup',() => {
-        document.getElementById('capturedImage').src = '<%=capturedfile%>';
-        console.log(document.getElementById('capturedImage').src)
-        document.getElementById('capturedImage').style.display = "inline"
-    })
-
-    // $(document).ready(function() {
-    //   $('body').keyup(function() {
-    //     alert('Handler for .keyup() called.');
-    
-    //   });
-    // });
-
-      // console.log('i am not creating any problem')
 
   </script>
 
-  <body>
+    <div class="upload-file">
+      <input type="file" id='capturedImage' >
+      <!-- onchange="displayImage()" -->
+      <!-- <img alt="" id="capturedImage">'; -->
+    </div>
 
-    <img id="capturedImage" alt="">
     <div id="original">
       <h4>Actual Image</h4>
       <img src='data:image/jpg;base64,<%=chunk%>' id='actual' name='<%=name%>' style="max-width:12rem; max-height: 16rem;">
